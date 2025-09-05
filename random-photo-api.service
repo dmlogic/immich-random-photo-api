@@ -1,0 +1,20 @@
+[Unit]
+Description=Random Photo API Service
+After=network.target
+
+[Service]
+User=darren
+Group=darren
+
+# The absolute path to your project folder
+WorkingDirectory=/home/darren/Code/immich-random-photo-api
+
+# The command to start the API
+# Assumes your virtual environment is in 'venv' inside your project folder
+ExecStart=/home/darren/Code/immich-random-photo-api/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:8000 api:app
+
+# This is key: it tells systemd to restart the service if it fails
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
