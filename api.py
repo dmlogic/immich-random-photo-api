@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, send_file, abort
+from flask import Flask, jsonify, send_file, abort, render_template
 from dotenv import load_dotenv
 from src import lookup, transform
 import io
@@ -45,6 +45,13 @@ def serve_image(width, height, image_path):
         io.BytesIO(image),
         mimetype='image/jpeg',
         as_attachment=False
+    )
+
+@app.route('/slideshow', methods=['GET'])
+def web():
+    return render_template(
+        "slideshow.html",
+        delay=15000
     )
 
 if __name__ == '__main__':
