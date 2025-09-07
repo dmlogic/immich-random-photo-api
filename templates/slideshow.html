@@ -182,11 +182,25 @@ function primeNextImage(withData) {
     img.src = nextImage.url;
 }
 
+function getDateSuffix(day) {
+	if (day >= 11 && day <= 13) return 'th';
+	switch (day % 10) {
+		case 1: return 'st';
+		case 2: return 'nd';
+		case 3: return 'rd';
+		default: return 'th';
+	}
+}
 function changeImageDisplay(imageData) {
     imageElement.style.backgroundImage = "url('" + imageData.url + "')";
     titleElement.innerText = imageData.album;
+
 	const imageDate = new Date(imageData.date);
-    dateElement.innerText = imageDate.toLocaleDateString();
+	const day = imageDate.getDate();
+	const suffix = getDateSuffix(day);
+	const month = imageDate.toLocaleString('default', { month: 'long' })
+	const year = imageDate.getFullYear();
+    dateElement.innerText = `${day}${suffix} ${month} ${year}`
 }
 
 function displayPrimedImage() {

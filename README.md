@@ -6,7 +6,7 @@ It's purpose is to serve random images to local photo frames/TVs on the same net
 
 With that in place, this api can be called as follows:
 
-GET http://192.168.1.x/random-photo
+GET http://192.168.1.x/:8000/random-photo
 
 ```
 {
@@ -19,9 +19,22 @@ GET http://192.168.1.x/random-photo
 
 The path can then be provided to the second endpoint to load the image
 
-GET http://192.168.1.x/image/{path}
+GET http://192.168.1.x:8000/{width}x{height}/image/{path}
 
-## todo
+A sample .service file is include to run the API via Gunicorn.
 
-* Accept width and height arguments to provide the image data back matched to the size of display
-* Always respond with jpg, converting any HEIC images
+## Viewing the images
+
+Two options are provided:
+
+### 1. Browser-based slideshow
+
+Access the slideshow endpoint. It is designed to work with _very_ old browsers so is good for those supplied with most TVs.
+
+GET http://192.168.1.x:8000/{width}x{height}/image/{path}
+
+### 2. Direct HDMI output (@todo)
+
+With a newtwork-enabled Raspberry PI plugged in, add this line to `~/.bashrc`
+
+`python3 /full/path/to/immich-randowm-photo-api/hdmi/slideshow.py`
