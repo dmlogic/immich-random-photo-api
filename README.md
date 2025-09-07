@@ -37,4 +37,4 @@ GET http://192.168.1.x:8000/{width}x{height}/image/{path}
 
 With a newtwork-enabled Raspberry PI plugged in, add this line to `~/.bashrc`
 
-`python3 /full/path/to/immich-randowm-photo-api/hdmi/slideshow.py`
+`python3 /full/path/to/immich-randowm-photo-api/hdmi.py`
