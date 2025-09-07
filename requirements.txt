@@ -2,3 +2,5 @@ flask
 gunicorn
 python-dotenv
 psycopg[binary]
+Pillow
+pillow-heif
