@@ -136,13 +136,12 @@ imageElement = document.querySelector(".slideshow"),
 loading = document.querySelector(".loading"),
 photoDelay = 15000,
 photoHistory = [],
-photoHistoryPosition = 0,
 titleElement = document.querySelector(".title"),
 toggle = document.querySelector("#toggle"),
 imageWidth = screen.width,
 imageHeight = screen.height
 
-let movementTimer, nextImage, slideshowTimer
+let movementTimer, nextImage, slideshowTimer, photoHistoryPosition = 0
 
 
 function toggleControls() {
