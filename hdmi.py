@@ -15,7 +15,6 @@ image_display = display.Display(os.path.dirname(os.path.realpath(__file__))+'/fo
 
 def display_image():
     next_image = image_lookup.get_random_image()
-    print("Next image:", next_image)
     try:
         response = requests.get(next_image["url"])
         image_bytes = io.BytesIO(response.content)

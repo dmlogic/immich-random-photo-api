@@ -24,7 +24,7 @@ class Display:
         pygame.mouse.set_visible(0)
         self.canvas = pygame.display.set_mode(
             (self.max_width, self.max_height),
-            # flags=pygame.FULLSCREEN
+            pygame.FULLSCREEN
         )
         self.title_font = pygame.font.Font(self.font_path+'OpenSans-SemiBold.ttf', 36)
         self.date_font = pygame.font.Font(self.font_path+'OpenSans-SemiBoldItalic.ttf', 24)
