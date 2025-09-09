@@ -12,7 +12,7 @@ class ApiLookup:
         response = requests.get(url)
         if response.status_code == 200:
             data = response.json()
-            data["url"] = f"{self.endpoint}image/{self.width}x{self.height}/{data['path']}"
+            data["url"] = f"{self.endpoint}/image/{self.width}x{self.height}/{data['path']}"
             return data
         else:
             raise Exception("Failed to fetch random photo")
