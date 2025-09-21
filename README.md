@@ -29,12 +29,16 @@ Two options are provided:
 
 ### 1. Browser-based slideshow
 
-Access the slideshow endpoint. It is designed to work with _very_ old browsers so is good for those supplied with most TVs.
+Access the slideshow endpoint. It is designed to work with _very_ old browsers so is good for those supplied with most TVs. It has pause/back/forward buttons that work with tv pointer remotes.
 
-GET http://192.168.1.x:8000/{width}x{height}/image/{path}
+GET http://192.168.1.x:8000/slideshow
 
 ### 2. Direct HDMI output (@todo)
 
-With a newtwork-enabled Raspberry PI plugged in, add this line to `~/.bashrc`
+* Get a network-enabled raspberry pi
+* Clone this repo, populate .env with the HDMI_X values
+* Install the packages in `requirements-hdmi.txt`
+* Possibly install `libegl-dev` also
+* add this line to `~/.bashrc`:
 
-`python3 /full/path/to/immich-randowm-photo-api/hdmi.py`
+`python /full/path/to/immich-randowm-photo-api/hdmi.py`
