@@ -33,7 +33,7 @@ Access the slideshow endpoint. It is designed to work with _very_ old browsers s
 
 GET http://192.168.1.x:8000/slideshow
 
-### 2. Direct HDMI output (@todo)
+### 2. Direct HDMI output
 
 * Get a network-enabled raspberry pi
 * Clone this repo, populate .env with the HDMI_X values
