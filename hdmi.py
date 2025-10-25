@@ -21,8 +21,9 @@ def display_image():
         image_display.send_to_hdmi(next_image, image_bytes)
         time.sleep(int(os.getenv('HDMI_DURATION')))
     except Exception as e:
-        print(f"An error occurred: {e}")
-        # display_image()
+        # print(f"An error occurred: {e}")
+        time.sleep(int(os.getenv('HDMI_DURATION')))
+        display_image()
 
 try:
     while True:
