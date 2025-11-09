@@ -1,6 +1,8 @@
-from decimal import *
-import pygame
 from datetime import datetime
+from decimal import *
+from PIL import Image, ImageOps
+import io
+import pygame
 
 white = (255, 255, 255)
 black = (0, 0, 0)
@@ -38,12 +40,25 @@ class Display:
         pygame.mouse.set_visible(0)
         pygame.display.update()
 
-    def load_image(self, image_path):
+
+    def load_image(self, image_data):
         try:
-            return pygame.image.load(image_path)
-        except:
+            # Accept either raw bytes or BytesIO
+            if hasattr(image_data, 'read'):
+                image_bytes = image_data.getvalue()
+            else:
+                image_bytes = image_data
+            img = Image.open(io.BytesIO(image_bytes))
+            img = ImageOps.exif_transpose(img)
+            img = img.convert("RGB")
+            # Convert Pillow image to bytes for pygame
+            img_bytes = io.BytesIO()
+            img.save(img_bytes, format='BMP')
+            img_bytes.seek(0)
+            return pygame.image.load(img_bytes)
+        except Exception as e:
             print("Bad image")
-            print(image_path)
+            print(e)
             quit()
 
     def render_image(self, image):

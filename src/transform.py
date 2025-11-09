@@ -11,10 +11,13 @@ class ImageTransformer:
 
     def transform(self, path):
         canvas = Image.new("RGB", (self.width, self.height), (0, 0, 0))
-        imgbytes = Image.open(path).convert("RGB")
+        img = Image.open(path)
+        # Correct orientation using EXIF data if present
+        img = ImageOps.exif_transpose(img)
+        img = img.convert("RGB")
 
         # Fit image to canvas, maintaining aspect ratio
-        img = ImageOps.contain(imgbytes, (self.width, self.height))
+        img = ImageOps.contain(img, (self.width, self.height))
         # Center the image on the canvas
         x = (self.width - img.width) // 2
         y = (self.height - img.height) // 2

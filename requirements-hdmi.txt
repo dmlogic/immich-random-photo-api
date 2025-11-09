@@ -1,3 +1,5 @@
 python-dotenv
 pygame
 requests
+Pillow
+pillow-heif
