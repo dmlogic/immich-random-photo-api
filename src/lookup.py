@@ -9,8 +9,8 @@ class DatabaseLookup:
         query = """
         select a.id, album."albumName", a."originalPath", a."fileCreatedAt"
         from asset a
-        join album_asset aa on aa."assetsId" = a.id
-        join album on album.id = aa."albumsId"
+        join album_asset aa on aa."assetId" = a.id
+        join album on album.id = aa."albumId"
         where a."type" = 'IMAGE'
             and album."albumName" not like '\\_%'
         order by random()
