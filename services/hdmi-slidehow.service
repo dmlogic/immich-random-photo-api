@@ -1,0 +1,17 @@
+[Unit]
+Description=Immich Random Photo HDMI Slideshow (pygame framebuffer)
+After=multi-user.target
+Wants=multi-user.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/immich-random-photo-api
+ExecStart=/usr/bin/python3 /home/pi/immich-random-photo-api/hdmi.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
