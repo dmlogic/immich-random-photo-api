@@ -14,16 +14,17 @@ image_lookup = apilookup.ApiLookup(os.getenv('HDMI_ENDPOINT'), os.getenv('HDMI_W
 image_display = display.Display(os.path.dirname(os.path.realpath(__file__))+'/fonts/', os.getenv('HDMI_WIDTH'), os.getenv('HDMI_HEIGHT'))
 
 def display_image():
-    next_image = image_lookup.get_random_image()
     try:
+        next_image = image_lookup.get_random_image()
         response = requests.get(next_image["url"])
+        response.raise_for_status()
         image_bytes = io.BytesIO(response.content)
         image_display.send_to_hdmi(next_image, image_bytes)
-        time.sleep(int(os.getenv('HDMI_DURATION')))
     except Exception as e:
-        # print(f"An error occurred: {e}")
-        time.sleep(int(os.getenv('HDMI_DURATION')))
-        display_image()
+        print(f"[ERROR] display_image failed: {e!r}")
+    # Always sleep, even after error
+    duration = int(os.getenv('HDMI_DURATION', '10'))
+    time.sleep(duration)
 
 try:
     while True:
