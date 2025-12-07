@@ -59,7 +59,7 @@ class Display:
         except Exception as e:
             print("Bad image")
             print(e)
-            quit()
+            raise
 
     def render_image(self, image):
         self.canvas.blit(image, (0, 0))
