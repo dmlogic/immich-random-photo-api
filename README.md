@@ -39,6 +39,4 @@ GET http://192.168.1.x:8000/slideshow
 * Clone this repo, populate .env with the HDMI_X values
 * Install the packages in `requirements-hdmi.txt`
 * Possibly install `libegl-dev` also
-* add this line to `crontab -e`:
-
-`@reboot python /full/path/to/immich-randowm-photo-api/hdmi.py`
+* Install and enable the hdmi-slideshow.service
